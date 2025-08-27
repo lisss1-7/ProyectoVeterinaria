@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>ESTÉTICA CANINA GUAU - Servicios a Domicilio</title>
+    <link rel="stylesheet" href="style.css" />
+
+</head>
+
+<body>
+     <header class="site-header">
+  <div class="site-header">
+  <div class="header-top">
+    <div class="logo">
+       <a href="index.html">
+      <img src="img/WhatsApp Image 2025-07-15 at 1.58.19 PM.jpeg" alt="Logo GUAU" />
+       </a>
+    </div>
+
+    <div class="header-center">
+      <h1 class="brand-title">Estética Canina 'GUAU'</h1>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li class="has-sub">
+                        <a href="servicios.html">Servicios</a>
+                        <div class="submenu">
+                            <a href="local.html">En Local</a>
+                            <a href="domicilio.html">A Domicilio</a>
+                        </div>
+                    </li>
+          <li><a href="sucursales.html">Sucursales</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="login-btn">
+      <a href="login.html">
+      <img src="https://icon-library.com/images/login-icon-images/login-icon-images-24.jpg" alt="Login" />
+      </a>
+    </div>
+  </div>
+</div>
+
+</header>
+
+<style>
+    .servicios-section {
+  background: linear-gradient(to right, #d23988, #ff914d, #295391);
+  padding: 60px 0;
+}
+</style>
+
+    <main>
+        <section class="servicios-section">
+            <div class="container">
+                <h2>NUESTROS SERVICIOS A DOMICILIO</h2>
+                <p class="lead">Brindamos comodidad y cuidado profesional en la puerta de tu casa para tu mascota.</p>
+
+                <div class="servicios-cards-grid">
+                    <article class="servicios-card">
+                        <img src="img/domi1a.jpeg" alt="Servicio 1" />
+                    </article>
+                    <article class="servicios-card">
+                        <img src="img/domi2a.jpeg" alt="Servicio 2" />
+                    </article>
+                    <article class="servicios-card">
+                        <img src="img/domi9a.jpeg" alt="Servicio 3" />
+                    </article>
+                    <article class="servicios-card">
+                        <img src="img/domi4a.jpeg" alt="Servicio 4" />
+                    </article>
+                    <article class="servicios-card">
+                        <img src="img/domi5a.jpeg" alt="Servicio 5" />
+                    </article>
+                    <article class="servicios-card">
+                        <img src="img/domi6a.jpeg" alt="Servicio 6" />
+                    </article>
+                    <article class="servicios-card">
+                        <img src="img/domi7a.jpeg" alt="Servicio 7" />
+                    </article>
+                    <article class="servicios-card">
+                        <img src="img/domi8a.jpeg" alt="Servicio 8" />
+                    </article>
+                    <article class="servicios-card">
+                        <img src="img/domi3a.jpeg" alt="Servicio 9" />
+                    </article>
+                    <article class="servicios-card">
+                        <img src="img/domi10r.jpeg" alt="Servicio 10" />
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>© <span id="year"></span> ESTÉTICA CANINA GUAU. Derechos Reservados.</p>
+            <p>HECHO POR UMG</p>
+        </div>
+
+        <div class="social-floating">
+            <a href="https://l.instagram.com/?u=https%3A%2F%2Fwa.me%2F50237563785&e=AT2ELM2TJxERVhOgw4YaNDv4TQLhWFXQzGa6MrdE-GBqrNMWyHWubzneCbWlqsmu-IxLvj1E88VvU3V1E0GUogwP_gRDT6f_zS0JJ_JJ-lLSIeg0"
+                target="_blank" class="btn-float whatsapp" title="WhatsApp">
+                <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+            </a>
+            <a href="https://www.facebook.com/Esteticacanguau/?locale=es_LA" target="_blank" class="btn-float facebook"
+                title="Facebook">
+                <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook">
+            </a>
+            <a href="https://www.instagram.com/esteticanina_guau/?hl=es" target="_blank" class="btn-float instagram"
+                title="Instagram">
+                <img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram">
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        // Actualiza el año automáticamente
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Menu móvil
+        const menuBtn = document.getElementById('menu-btn');
+        const nav = document.querySelector('.main-nav');
+        menuBtn.addEventListener('click', () => {
+            nav.classList.toggle('open');
+        });
+
+        // Expandir imagen al click
+        const cards = document.querySelectorAll('.servicios-card img');
+
+        cards.forEach(img => {
+            img.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (img.classList.contains('expanded')) {
+                    img.classList.remove('expanded');
+                } else {
+                    cards.forEach(i => i.classList.remove('expanded'));
+                    img.classList.add('expanded');
+                }
+            });
+        });
+
+        document.addEventListener('click', () => {
+            cards.forEach(i => i.classList.remove('expanded'));
+        });
+    </script>
+</body>
+
+</html>

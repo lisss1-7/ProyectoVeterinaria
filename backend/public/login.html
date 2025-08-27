@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login - Estética Canina GUAU</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <header class="site-header">
+  <div class="site-header">
+  <div class="header-top">
+    <div class="logo">
+       <a href="index.html">
+      <img src="img/WhatsApp Image 2025-07-15 at 1.58.19 PM.jpeg" alt="Logo GUAU" />
+       </a>
+    </div>
+
+    <div class="header-center">
+      <h1 class="brand-title">Estética Canina 'GUAU'</h1>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li class="has-sub">
+                        <a href="servicios.html">Servicios</a>
+                        <div class="submenu">
+                            <a href="local.html">En Local</a>
+                            <a href="domicilio.html">A Domicilio</a>
+                        </div>
+                    </li>
+          <li><a href="sucursales.html">Sucursales</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="login-btn">
+      <a href="login.html">
+      <img src="img/login.png" alt="Login" />
+      </a>
+    </div>
+  </div>
+</div>
+
+</header>
+
+<style>
+    .login-section {
+  background: linear-gradient(to right, #d23988, #ff914d, #295391);
+  padding: 60px 0;
+}
+
+
+</style>
+
+
+  <main>
+    <section class="login-section">
+      <div class="container login-card">
+        <div class="login-image">
+          <img src="https://images.unsplash.com/photo-1558788353-f76d92427f16?auto=format&fit=crop&w=600&q=80"
+            alt="Mascota feliz" />
+        </div>
+        <div class="login-form-container">
+          <h2>Iniciar sesión</h2>
+          <!-- AQUI SE AGREGA EL ID -->
+          <form id="loginForm" class="login-form" action="#" method="post"> 
+            
+            <label for="usuario">
+              <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Icono usuario" style="width:20px; vertical-align:middle; margin-right:8px;">
+              Usuario:
+            </label>
+            <input type="text" id="usuario" name="usuario" placeholder="Ingresa tu usuario" required />
+            <label for="contrasena">
+              <img src="https://cdn-icons-png.flaticon.com/512/3064/3064155.png" alt="Icono contraseña" style="width:20px; vertical-align:middle; margin-right:8px;">
+              Contraseña:
+            </label>
+            <input type="password" id="contrasena" name="contrasena" placeholder="********" required />
+            <button type="submit" class="btn primary">LOG IN</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> ESTÉTICA CANINA GUAU. Derechos Reservados.</p>
+      <p>HECHO POR UMG</p>
+    </div>
+
+    <div class="social-floating">
+      <a href="https://l.instagram.com/?u=https%3A%2F%2Fwa.me%2F50237563785&e=AT1brewDqwvbmnz-1vWl3ecsiSwc5obPQrzec6GnfaXj53A3Y0EhdBW1qI3_ICI2lGwEgNHDkzCgrC6FfEIXsHxlPMfXbz8KtuZsRfPWThaUeWsi"
+        target="_blank" class="btn-float whatsapp" title="WhatsApp">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+      </a>
+      <a href="https://www.facebook.com/Esteticacanguau/?locale=es_LA" target="_blank" class="btn-float facebook"
+        title="Facebook">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook">
+      </a>
+      <a href="https://www.instagram.com/esteticanina_guau/?hl=es" target="_blank" class="btn-float instagram"
+        title="Instagram">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram">
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    // Actualiza el año en el pie de página
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Manejo del menú de navegación
+    const menuBtn = document.getElementById('menu-btn');
+    const nav = document.querySelector('.main-nav');
+    if (menuBtn) { // Verifica si el botón existe
+        menuBtn.addEventListener('click', () => {
+            nav.classList.toggle('open');
+        });
+    }
+
+    // Manejo del formulario de inicio de sesión
+    document.getElementById('loginForm').addEventListener('submit', async function(event) {
+        event.preventDefault(); // Evitar el envío tradicional del formulario
+
+        const usuario = document.getElementById('usuario').value;
+        const contrasena = document.getElementById('contrasena').value;
+
+        try {
+            const response = await fetch('http://localhost:5000/api/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ usuario, contrasena })
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                // Redirigir según el acceso
+                if (data.acceso_pagina1) {
+                    window.location.href = 'vista.html'; // Redirigir a vista.html
+                } else if (data.acceso_pagina2) {
+                    window.location.href = 'sistema.html'; // Redirigir a sistema.html
+                } else {
+                    alert('No tienes acceso a ninguna página.');
+                }
+            } else {
+                alert(data.message); // Mostrar mensaje de error
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Hubo un problema de conexión. Inténtalo de nuevo más tarde.');
+        }
+    });
+</script>
+<script src="script.js"></script> <!-- Asegúrate de que script.js se carga DESPUÉS del formulario -->
+
+</body>
+
+</html>

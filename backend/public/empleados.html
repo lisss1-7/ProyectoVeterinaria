@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Veterinaria - Dashboard</title>
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<style>
+.main-header {
+  width: 100%;
+  background: var(--muted);
+  padding: 20px 40px;
+  border-bottom: 1px solid #eee;
+   background: linear-gradient(to right, #d23988, #ff914d, #295391);
+
+}
+
+.header-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo img {
+  width: 110px;
+  height: auto;
+}
+
+.header-center {
+  text-align: center;
+  flex: 8;
+
+}
+
+.brand-title {
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--negro);
+ 
+}
+
+.brand-title span {
+  color: var(--negro);
+}
+
+.user-icon img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--fucsia);
+  padding: 6px;
+}
+
+
+  :root {
+  --primary: #0077a8; /* azul corporativo */
+  --accent: #0f1ffd;  /* acento */
+  --muted: #ffffff;
+  --max-width: 1100px;
+  --radius: 8px;
+  font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+
+  /* Colores personalizados */
+  --fucsia: #d23988;
+  --azul-profundo: #295391;
+  --negro: #000000;
+  --mostaza: #ff914d;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*SISTEMAS*/
+.sidebar {
+  width: 280px;
+  height: 620px;         /* O usa una altura fija como 600px si lo prefieres */
+  background-color:  #f8aedf67;
+  position: fixed;
+  top: 300px;
+  left: 0;
+  bottom: 0;
+  padding: 20px;
+  z-index: 1000;
+  border-radius: 20px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-item {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.menu-toggle {
+  width: 100%;
+  background-color: #ffffff;
+  color: #d100a4;
+  font-weight: bold;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 2px 5px rgba(209, 0, 164, 0.2);
+}
+
+.menu-toggle img {
+  width: 35px;
+  height: 35px;
+}
+
+.menu-toggle:hover {
+  background-color: #f8c1e8;
+}
+
+.arrow {
+  margin-left: auto;
+  font-size: 12px;
+  color: #f8c1e8;
+}
+
+.submenu {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  background-color: #f8c1e8;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  display: none;
+  min-width: 220px;
+  z-index: 999;
+}
+
+.menu-item.open .submenu {
+  display: block;
+}
+
+.submenu li {
+  margin-bottom: 10px;
+}
+
+.submenu li a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 15px;
+  color: #d100a4;
+  text-decoration: none;
+  font-size: 14px;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+.submenu li a:hover {
+  background-color: #f8c1e8;
+  color: #d100a4;
+}
+
+.submenu li a img {
+  width: 20px;
+  height: 20px;
+}
+
+.menu-item.has-submenu:hover .submenu {
+  display: block;
+}
+</style>
+
+<body>
+<header class="main-header">
+  <div class="header-container">
+    
+    <!-- Logo principal con enlace -->
+    <div class="logo">
+      <a href="vista.html">
+        <img src="img/WhatsApp Image 2025-07-15 at 1.58.19 PM.jpeg" alt="Logo GUAU" />
+      </a>
+    </div>
+
+    <!-- Título centrado -->
+    <div class="header-center">
+      <h1 class="brand-title">Estética Canina <span>'GUAU'</span></h1>
+    </div>
+
+    <!-- Ícono de cerrar sesión con enlace -->
+    <div class="user-icon">
+      <a href="logout.html">
+        <img src="img/cerrar-sesion.png" alt="Cerrar sesión" />
+      </a>
+    </div>
+
+  </div>
+</header>
+
+
+<aside class="sidebar">
+  <nav>
+    <ul class="menu">
+      <li class="menu-item">
+        <a href="inicio.html" class="menu-toggle">
+          <img src="img/inicio.png" alt=""> INICIO
+        </a>
+      </li>
+
+      <li class="menu-item">
+        <a href="empleados.html" class="menu-toggle">
+          <img src="img/empleado.png" alt=""> EMPLEADOS
+        </a>
+      </li>
+
+      <li class="menu-item">
+        <a href="productos.html" class="menu-toggle">
+          <img src="img/productos.png" alt=""> PRODUCTOS
+        </a>
+      </li>
+
+      <li class="menu-item">
+        <a href="servicio.html" class="menu-toggle">
+          <img src="img/esteticac.png" alt=""> SERVICIOS
+        </a>
+      </li>
+
+      <li class="menu-item has-submenu">
+        <button class="menu-toggle">
+          <img src="img/sucursal.png" alt=""> SUCURSALES
+          <span class="arrow">▼</span>
+        </button>
+        <ul class="submenu">
+          <li>
+            <a href="villanueva.html">
+              <img src="img/tienda.png" alt=""> VILLA NUEVA
+            </a>
+          </li>
+          <li>
+            <a href="zona1.html">
+              <img src="img/tienda.png" alt=""> ZONA 1
+            </a>
+          </li>
+          <li>
+            <a href="antiguaguatemala.html">
+              <img src="img/tienda.png" alt=""> ANTIGUA GUATEMALA
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="menu-item">
+        <a href="clientes.html" class="menu-toggle">
+          <img src="img/clientes.png" alt=""> CLIENTES
+        </a>
+      </li>
+
+      <li class="menu-item">
+        <a href="razas.html" class="menu-toggle">
+          <img src="img/razas.png" alt=""> RAZAS
+        </a>
+      </li>
+
+      <li class="menu-item has-submenu">
+        <button class="menu-toggle">
+          <img src="img/mantenimiento.png" alt=""> MANTENIMIENTO
+          <span class="arrow">▼</span>
+        </button>
+        <ul class="submenu">
+          <li>
+            <a href="mantenimiento-opcion1.html">
+              <img src="img/icon-opcion1.png" alt=""> Opción 1
+            </a>
+          </li>
+          <li>
+            <a href="mantenimiento-opcion2.html">
+              <img src="img/icon-opcion2.png" alt=""> Opción 2
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+</aside>
+
+
+</body>
+</html>
