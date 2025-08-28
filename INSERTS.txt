@@ -1,0 +1,99 @@
+
+INSERT INTO Nivel_Academico (Nivel_Academico)
+VALUES 
+('Primaria'),
+('Secundaria'),
+('Bachillerato'),
+('Técnico'),
+('Universitario'),
+('Maestría'),
+('Doctorado');
+
+
+INSERT INTO Tipo_Sangre (Tipo)
+VALUES 
+('A+'),
+('A-'),
+('B+'),
+('B-'),
+('AB+'),
+('AB-'),
+('O+'),
+('O-');
+
+
+INSERT INTO Tipo_Contacto (Contacto)
+VALUES
+('Padre'),
+('Madre'),
+('Hermano/a'),
+('Cónyuge'),
+('Amigo/a'),
+('Vecino'),
+('Otro');
+
+
+INSERT INTO Puesto (Puesto, Descripcion)
+VALUES
+('Secretaria', 'Encargada de la atención administrativa, manejo de agendas y coordinación de citas.'),
+('Groomista', 'Especialista en el cuidado estético de las mascotas, incluyendo baño, corte y peinado.');
+
+
+INSERT INTO Tamanio (Nombre, Descripcion) VALUES
+('Pequeño', 'Servicio en tamaño pequeño'),
+('Mediano', 'Servicio en tamaño mediano'),
+('Grande', 'Servicio en tamaño grande'),
+('Extra Grande', 'Servicio en tamaño extra grande');
+
+INSERT INTO Tipo_Raza (Raza, Descripcion) VALUES
+('Shih Tzu', 'Raza pequeña de pelaje largo, requiere cortes frecuentes'),
+('Poodle', 'Raza de pelo rizado, muy común en grooming por sus estilos de corte'),
+('Chihuahua', 'Raza muy popular, de pelo corto o largo, grooming sencillo'),
+('Labrador Retriever', 'Raza mediana a grande, requiere baños y cepillado regular'),
+('Golden Retriever', 'Raza grande de pelaje largo, necesita grooming para evitar nudos'),
+('Bulldog Francés', 'Raza pequeña, grooming más enfocado en limpieza de arrugas y orejas'),
+('Cocker Spaniel', 'Raza de orejas largas y pelaje medio, grooming regular'),
+('Schnauzer', 'Raza con barba y cejas características, grooming muy frecuente'),
+('Pastor Alemán', 'Raza grande de doble capa de pelo, requiere cepillado intenso'),
+('Pomerania', 'Raza pequeña y esponjosa, necesita grooming para mantener su pelaje'),
+('Beagle', 'Raza mediana, pelo corto pero requiere higiene constante'),
+('Dálmata', 'Raza de pelo corto, grooming básico pero baños regulares'),
+('Boxer', 'Raza mediana de pelo corto, grooming enfocado en limpieza general');
+
+
+INSERT INTO Sexo (nombre_sexo) VALUES
+('Macho'),
+('Hembra');
+
+
+INSERT INTO Modalidad (Modalidad) VALUES
+('Local'),
+('A domicilio');
+
+
+INSERT INTO Estado_Cita (estado) VALUES
+('Completa'),
+('En proceso');
+
+INSERT INTO Usuarios (usuario, contrasena, acceso_pagina1, acceso_pagina2, foto)
+VALUES 
+('admin1', 'adminpass1', 1, 0, NULL),
+('admin2', 'adminpass2', 1, 0, NULL);
+
+INSERT INTO Usuarios (usuario, contrasena, acceso_pagina1, acceso_pagina2, foto)
+VALUES 
+('super1', 'superpass1', 0, 1, NULL),
+('super2', 'superpass2', 0, 1, NULL);
+
+
+INSERT INTO Usuarios (usuario, contrasena, acceso_pagina1, acceso_pagina2, foto)
+VALUES 
+('Groomista1', 'groompass1', 0, 0, NULL),
+('Groomista2', 'groompass2', 0, 0, NULL),
+('Groomista3', 'groompass3', 0, 0, NULL);
+
+
+
+
+
+

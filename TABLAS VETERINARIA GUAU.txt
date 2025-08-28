@@ -1,0 +1,179 @@
+CREATE TABLE Dueño (
+	id_dueño INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	nombre_completo NVARCHAR(100) NOT NULL,
+	telefono VARCHAR(15) NULL,
+	email NVARCHAR(100) NULL,
+	direccion NVARCHAR(200) NULL
+);
+
+CREATE TABLE Tipo_Raza (
+	id_tipo_raza INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	Raza NVARCHAR(100) NOT NULL,
+	Descripcion NVARCHAR(200) NULL
+);
+
+
+
+CREATE TABLE Sexo (
+    id_sexo INT IDENTITY(1,1) PRIMARY KEY,
+    nombre_sexo VARCHAR(20) NOT NULL UNIQUE
+);
+
+
+CREATE TABLE Mascota (
+    id_mascota INT IDENTITY(1,1) PRIMARY KEY,
+    id_dueño INT NOT NULL,
+    id_sexo INT NOT NULL,
+    nombre NVARCHAR(50) NOT NULL,
+    id_tipo_raza INT NULL,
+    fecha_nacimiento DATE NULL,
+    observaciones NVARCHAR(MAX) NULL,
+    CONSTRAINT FK_Mascota_Dueño FOREIGN KEY (id_dueño) REFERENCES dbo.Dueño(id_dueño),
+    CONSTRAINT FK_Mascota_Sexo FOREIGN KEY (id_sexo) REFERENCES dbo.Sexo(id_sexo),
+    CONSTRAINT FK_Mascota_TipoRaza FOREIGN KEY (id_tipo_raza) REFERENCES dbo.Tipo_Raza(id_tipo_raza)
+);
+
+CREATE TABLE Modalidad (
+	id_modalidad INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	Modalidad NVARCHAR(50) NOT NULL
+);
+
+CREATE TABLE Tamanio (
+    id_Tamanio INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+    Nombre NVARCHAR(50) NOT NULL,
+    Descripcion NVARCHAR(200) NULL
+);
+
+
+CREATE TABLE Servicio (
+	id_Servicio INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	Servicio NVARCHAR(100) NOT NULL,
+        id_Tamanio INT NOT NULL,
+        id_Modalidad INT NOT NULL,
+        Precio INT NOT NULL,
+        Localidad NVARCHAR(100) NOT NULL,
+        CONSTRAINT FK_Servicio_Modalidad FOREIGN KEY (id_Modalidad) REFERENCES Modalidad(id_Modalidad),
+        CONSTRAINT FK_Servicio_Tamanio FOREIGN KEY (id_Tamanio) REFERENCES Tamanio(id_Tamanio)
+);
+
+
+
+CREATE TABLE Estado_Cita (
+	id_estado INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	estado NVARCHAR(50) NOT NULL
+);
+
+
+CREATE TABLE Cita (
+	id_cita INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	Nombre_dueño NVARCHAR(100) NOT NULL,
+	Telefono VARCHAR(15) NULL,
+	Email NVARCHAR(100) NULL,
+	id_Modalidad INT NULL,
+	id_Servicio INT NULL,
+	Hora TIME(7) NULL,
+	Fecha DATE NULL,
+	Especificaciones_de_Servicio NVARCHAR(200) NULL,
+	CONSTRAINT FK_Cita_Modalidad FOREIGN KEY (id_Modalidad) REFERENCES dbo.Modalidad(id_modalidad),
+	CONSTRAINT FK_Cita_Servicio FOREIGN KEY (id_Servicio) REFERENCES dbo.Servicio(id_Servicio)
+);
+
+
+CREATE TABLE Detalle_Servicio_Cita (
+	id_detalle INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	id_cita INT NOT NULL,
+	id_servicio INT NOT NULL,
+	observaciones NVARCHAR(300) NULL,
+        id_estado INT NULL,
+	CONSTRAINT FK_Detalle_Cita FOREIGN KEY (id_cita) REFERENCES dbo.Cita(id_cita),
+	CONSTRAINT FK_Detalle_Servicio FOREIGN KEY (id_servicio) REFERENCES dbo.Servicio(id_Servicio),
+        CONSTRAINT FK_Cita_Estado FOREIGN KEY (id_estado) REFERENCES dbo.Estado_Cita(id_estado)
+);
+
+
+CREATE TABLE Nivel_Academico (
+	id_Nivel_Academico INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	Nivel_Academico NVARCHAR(100) NOT NULL
+);
+
+
+CREATE TABLE Tipo_Sangre (
+	id_tipo_sangre INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	Tipo NVARCHAR(5) NOT NULL
+);
+
+
+CREATE TABLE Tipo_Contacto (
+	id_tipo_contacto INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	Contacto NVARCHAR(100) NOT NULL
+);
+
+
+CREATE TABLE Sucursal (
+	id_sucursal INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	Nombre NVARCHAR(100) NOT NULL,
+	Direccion NVARCHAR(200) NOT NULL,
+	Telefono_Contacto VARCHAR(15) NULL
+);
+
+
+CREATE TABLE Puesto (
+	id_puesto INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	Puesto NVARCHAR(100) NOT NULL,
+	Descripcion NVARCHAR(200) NULL
+);
+
+CREATE TABLE Empleado (
+	id_empleado INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	primer_nombre NVARCHAR(50) NULL,
+	segundo_nombre NVARCHAR(50) NULL,
+	primer_apellido NVARCHAR(50) NULL,
+	segundo_apellido NVARCHAR(50) NULL,
+	NoDPI VARCHAR(20) NOT NULL UNIQUE,
+        Telefono INT NOT NULL,
+        Direccion NVARCHAR(100) NOT NULL,
+	id_Nivel_academico INT NULL,
+	Alergias NVARCHAR(10) NULL,
+	id_tipo_sangre INT NULL,
+	Experiencia_previa NVARCHAR(300) NULL,
+	Nombre_Contacto_emergencia NVARCHAR(100) NULL,
+	id_tipo_contacto INT NULL,
+	Telefono_Contacto_emergencia VARCHAR(15) NULL,
+	id_sucursal INT NULL,
+	id_puesto INT NULL,
+	CONSTRAINT FK_Empleado_NivelAcademico FOREIGN KEY (id_Nivel_academico) REFERENCES dbo.Nivel_Academico(id_Nivel_Academico),
+	CONSTRAINT FK_Empleado_TipoSangre FOREIGN KEY (id_tipo_sangre) REFERENCES dbo.Tipo_Sangre(id_tipo_sangre),
+	CONSTRAINT FK_Empleado_TipoContacto FOREIGN KEY (id_tipo_contacto) REFERENCES dbo.Tipo_Contacto(id_tipo_contacto),
+	CONSTRAINT FK_Empleado_Sucursal FOREIGN KEY (id_sucursal) REFERENCES dbo.Sucursal(id_sucursal),
+	CONSTRAINT FK_Empleado_Puesto FOREIGN KEY (id_puesto) REFERENCES dbo.Puesto(id_puesto)
+);
+
+
+CREATE TABLE Expediente (
+	id_Expediente INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	id_Cita INT NOT NULL,
+	id_mascota INT NOT NULL,
+	id_empleado INT NOT NULL,
+	CONSTRAINT FK_Expediente_Cita FOREIGN KEY (id_Cita) REFERENCES dbo.Cita(id_cita),
+	CONSTRAINT FK_Expediente_Mascota FOREIGN KEY (id_mascota) REFERENCES dbo.Mascota(id_mascota),
+	CONSTRAINT FK_Expediente_Empleado FOREIGN KEY (id_empleado) REFERENCES dbo.Empleado(id_empleado)
+);
+
+
+CREATE TABLE Consulta (
+    id_consulta INT IDENTITY(1,1) PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    telefono VARCHAR(20) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    mensaje VARCHAR(MAX) NOT NULL
+);
+
+
+CREATE TABLE Usuarios (
+    id INT IDENTITY(1,1) PRIMARY KEY,
+    usuario NVARCHAR(50) NOT NULL,
+    contrasena NVARCHAR(100) NOT NULL,
+    acceso_pagina1 BIT NOT NULL DEFAULT 0,
+    acceso_pagina2 BIT NOT NULL DEFAULT 0,
+    foto NVARCHAR(255) NULL
+);
