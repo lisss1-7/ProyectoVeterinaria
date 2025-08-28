@@ -11,7 +11,7 @@ const dbConfig = {
   password: '123',
   server: 'LAPTOP-843ALV87',
   database: 'Estetica',
-  options: {
+    options: {
     trustServerCertificate: true
   }
 };
@@ -28,7 +28,25 @@ mssql.connect(dbConfig)
  
 // Ruta de API (mantenida para el formulario)
 app.post('/api/citas', async (req, res) => {
-  // ... (el mismo código de inserción que teníamos antes)
+  const { nombre, telefono, email, modalidad, servicio, fecha, hora, especificaciones } = req.body;
+  try {
+    const pool = await mssql.connect(dbConfig);
+    await pool.request()
+      .input('nombre', mssql.NVarChar, nombre)
+      .input('telefono', mssql.NVarChar, telefono)
+      .input('email', mssql.NVarChar, email)
+      .input('modalidad', mssql.NVarChar, modalidad)
+      .input('servicio', mssql.NVarChar, servicio)
+      .input('fecha', mssql.Date, fecha)
+      .input('hora', mssql.Time, hora)
+      .input('especificaciones', mssql.NVarChar, especificaciones)
+      .query(`INSERT INTO Citas (nombre, telefono, email, modalidad, servicio, fecha, hora, especificaciones)
+              VALUES (@nombre, @telefono, @email, @modalidad, @servicio, @fecha, @hora, @especificaciones)`);
+    res.status(200).json({ message: 'Cita registrada exitosamente' });
+  } catch (err) {
+    console.error('Error al registrar cita:', err);
+    res.status(500).json({ message: 'Error al registrar la cita' });
+  }
 });
 
 // Ruta principal modificada para servir index.html
