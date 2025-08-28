@@ -49,139 +49,77 @@
 
 
 <main>
-    <!-- Carrusel de imágenes -->
-   <section class="carousel">
-  <div class="carousel-container">
-    <div class="carousel-slide active">
-      <img src="img/fondo1.jpg" alt="Mascota feliz 1" />
-    </div>
-    <div class="carousel-slide">
-      <img src="img/fondo2.png" alt="Mascota feliz 2" />
-    </div>
-    <div class="carousel-slide">
-      <img src="img/fondo3.png" alt="Mascota feliz 3" />
-    </div>
-    <div class="carousel-slide">
-      <img src="img/fondo4.jpg" alt="Mascota feliz 4" />
-    </div>
+<form class="form-cita" id="formCita">
+  <h2>Agenda tu cita</h2>
 
-    <button class="carousel-btn prev">&#10094;</button>
-    <button class="carousel-btn next">&#10095;</button>
+  <div class="form-group">
+    <label for="nombre">Nombre del dueño *</label>
+    <input type="text" id="nombre" required>
   </div>
-</section>
 
-
-
-    <!-- Servicios -->
-    <section class="services">
-        <div class="container">
-            <h2>NUESTROS SERVICIOS INCLUYEN</h2>
-            <p class="lead">Cada servicio que brindamos lo hacemos pensando en el Cuidado de Tu Mascota</p>
-
-            <div class="cards-grid">
-                <article class="card">
-                    <img src="img/lavar-perro-mascota-en-casa.jpg" alt="Grooming" />
-                    <h3>BAÑO</h3>
-                    <p>Disfruta de un baño refrescante y un grooming completo que dejará a tu mascota limpia y feliz.</p>
-                </article>
-
-                <article class="card">
-                    <img src="https://www.abc.com.py/resizer/v2/UQ4OQ4HCMNHGFIDWVCGOZ3YG3Q.jpg?auth=012a2560d99e528f64bbdaf8c448bfde4db3702f4a5ac2af06f79fdd47b7ba17&width=770&smart=true"
-                        alt="Farmacia" />
-                    <h3>SECADO</h3>
-                    <p>Secado profesional que protege el pelaje y evita molestias, para un acabado impecable.</p>
-                </article>
-
-                <article class="card">
-                    <img src="img/la-mujer-corta-un-perro-perro-sentado-en-un-sofa-raza-yorkshire-terrier.jpg"
-                        alt="Veterinaria" />
-                    <h3>CORTE</h3>
-                    <p>Cortes personalizados que resaltan la belleza y comodidad de tu mascota, realizados con cuidado y estilo.</p>
-                </article>
-
-                <article class="card">
-                    <img src="https://medismart.net/wp-content/uploads/2019/09/2018-0528-01.jpg" alt="Hotel" />
-                    <h3>LIMPIEZA DENTAL</h3>
-                    <p>Cuidamos la salud bucal de tu mascota con limpiezas dentales profesionales para prevenir enfermedades.</p>
-                </article>
-            </div>
-        </div>
-    </section>
-
-
-<!-- cita -->
-<section class="cta-section">
-  <div class="cta-overlay">
-    <h2>¡Agenda una Cita y Consiente a tu Mascota Hoy!</h2>
-    <p>¡No esperes más para darle el cuidado que se merece!</p>
-    <p>En cada visita tu mascota se sentirá como en casa ya que la consentiremos de principio a fin. Nuestro objetivo es ser la cadena más grande de tiendas, y posicionarnos como la marca líder de servicios para mascotas en la que nuestros clientes encuentren realmente una ayuda, se sientan apoyados y respaldados.</p>
-    <a href="cita.html" class="cta-button">¡Agenda Tu Cita!</a>
+  <div class="form-group">
+    <label for="telefono">Teléfono</label>
+    <input type="tel" id="telefono">
   </div>
-</section>
 
-<!-- Productos destacados -->
-<section class="products">
-  <div class="container">
-    <h2>NUESTROS PRODUCTOS DESTACADOS</h2>
-    <p class="lead">Seleccionados para brindar comodidad, estilo y bienestar a tu mascota</p>
+  <div class="form-group">
+    <label for="email">Correo electrónico</label>
+    <input type="email" id="email">
+  </div>
 
-    <div class="cards-grid">
-      <article class="card">
-        <img src="https://arcadenoe.com.gt/cdn/shop/products/364208_1400x.jpg?v=1753887991" alt="Cama para perro" />
-        <h3>Cama Furhaven Ultra Plush Oval Lounger Cream</h3>
-        <p class="price">Q 378.95</p>
-      </article>
+  <div class="form-row">
+    <div class="form-group">
+      <label for="modalidad">Modalidad *</label>
+      <select id="modalidad" required>
+        <option value="">Selecciona modalidad</option>
+        <option value="1">Local</option>
+        <option value="2">A domicilio</option>
+      </select>
+    </div>
 
-      <article class="card">
-        <img src="https://arcadenoe.com.gt/cdn/shop/products/102772-102773---2_1400x.jpg?v=1597468394" alt="Arnés para perro" />
-        <h3>Arnés M-Pets Hiking Triangle Large - Orange Black</h3>
-        <p class="price">Q 284.95</p>
-      </article>
-
-      <article class="card">
-        <img src="https://arcadenoe.com.gt/cdn/shop/files/383208_1400x.jpg?v=1750263727" alt="Correa para perro" />
-        <h3>Correa Para Perro FuzzYard Life Dog Lead</h3>
-        <p class="price">Q 124.95</p>
-      </article>
-
-      <article class="card">
-        <img src="https://arcadenoe.com.gt/cdn/shop/products/101319._1400x.jpg?v=1663879498" alt="Concentrado para perro" />
-        <h3>Concentrado Pro Plan Exigent Small Breed</h3>
-        <p class="price">Q 269.95</p>
-      </article>
+    <div class="form-group">
+      <label for="servicio">Servicio *</label>
+      <select id="servicio" required>
+        <option value="">Selecciona un servicio</option>
+        <option value="1">Baño</option>
+        <option value="2">Corte</option>
+        <option value="3">Spa</option>
+      </select>
     </div>
   </div>
-</section>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label for="fecha">Fecha *</label>
+      <input type="date" id="fecha" required>
+    </div>
+
+    <div class="form-group">
+      <label for="hora">Hora *</label>
+      <input type="time" id="hora" required>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="especificaciones">Especificaciones del servicio</label>
+    <textarea id="especificaciones" placeholder="Alguna indicación especial..."></textarea>
+  </div>
+
+  <button type="submit" class="btn-enviar">Enviar cita</button>
+</form>
+
+<!-- Modal -->
+<div id="modalConfirmacion" class="modal">
+  <div class="modal-content">
+    <h3>✅ Tu cita ha sido registrada exitosamente</h3>
+    <div class="modal-buttons">
+      <button onclick="cerrarModal()">OK</button>
+    </div>
+  </div>
+</div>
 
 
-
-
-    <!-- Contacto -->
-    <section class="contact">
-        <div class="container contact-inner">
-
-
-            <!-- Botones flotantes de redes sociales -->
-            <div class="social-floating">
-                <a href="https://wa.me/50237563785" target="_blank" class="btn-float whatsapp" title="WhatsApp">
-                    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
-                </a>
-                <a href="https://www.facebook.com/Esteticacanguau/?locale=es_LA" target="_blank"
-                    class="btn-float facebook" title="Facebook">
-                    <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook">
-                </a>
-                <a href="https://www.instagram.com/esteticanina_guau/?hl=es" target="_blank"
-                    class="btn-float instagram" title="Instagram">
-                    <img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram">
-                </a>
-            </div>
-        </div>
-    </section>
 </main>
-
-
-
-
 
     <footer class="site-footer">
         <div class="container footer-inner">
@@ -190,54 +128,6 @@
         </div>
     </footer>
 
-
-
-
-    <script>
-// Carrusel
-document.addEventListener('DOMContentLoaded', function () {
-  // Año en el footer
-  document.getElementById('year').textContent = new Date().getFullYear();
-
-  // Menú móvil (solo si existe el botón)
-  const menuBtn = document.getElementById('menu-btn');
-  const nav = document.querySelector('.main-nav');
-  if (menuBtn) {
-    menuBtn.addEventListener('click', () => {
-      nav.classList.toggle('open');
-    });
-  }
-
-  // Carrusel
-  const slides = document.querySelectorAll('.carousel-slide');
-  const prevBtn = document.querySelector('.carousel-btn.prev');
-  const nextBtn = document.querySelector('.carousel-btn.next');
-  let currentIndex = 0;
-
-  function showSlide(index) {
-    slides.forEach((slide, i) => {
-      slide.classList.remove('active');
-    });
-    slides[index].classList.add('active');
-  }
-
-  function nextSlide() {
-    currentIndex = (currentIndex + 1) % slides.length;
-    showSlide(currentIndex);
-  }
-
-  function prevSlide() {
-    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-    showSlide(currentIndex);
-  }
-
-  if (nextBtn) nextBtn.addEventListener('click', nextSlide);
-  if (prevBtn) prevBtn.addEventListener('click', prevSlide);
-
-  setInterval(nextSlide, 5000);
-  showSlide(currentIndex);
-});
-  </script>
+<script src="js/cita.js"></script>
 </body>
-
 </html>
